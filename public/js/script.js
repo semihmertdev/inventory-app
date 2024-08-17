@@ -1,8 +1,7 @@
+// script.js
+
 function toggleForm(formId) {
-    var form = document.getElementById(formId);
-    if (form.style.display === "none" || form.style.display === "") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-}
+    const form = document.getElementById(formId);
+    form.classList.toggle('show');
+  }
+  

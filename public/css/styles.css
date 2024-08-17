@@ -44,3 +44,18 @@
   #root, #__next {
     isolation: isolate;
   }
+
+  /* styles.css */
+
+.form-container {
+  display: none; /* Başlangıçta form gizli */
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-container.show {
+  display: block; /* Form görünür hale gelir */
+}
