@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Categories</title>
+</head>
+<body>
+  <h1>Categories</h1>
+  <ul>
+    <% categories.forEach(category => { %>
+      <li><%= category.name %> - <%= category.description %></li>
+    <% }); %>
+  </ul>
+  <a href="/">Back to Home</a>
+</body>
+</html>

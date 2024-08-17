@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Items</title>
+</head>
+<body>
+  <h1>Items</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Category</th>
+    </tr>
+    <% items.forEach(item => { %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.price %></td>
+        <td><%= item.category_name %></td>
+      </tr>
+    <% }); %>
+  </table>
+  <a href="/">Back to Home</a>
+</body>
+</html>

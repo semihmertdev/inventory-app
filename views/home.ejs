@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <style>
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        .navigation, .forms {
+            width: 45%;
+        }
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+        }
+        .navigation ul li {
+            margin: 10px 0;
+        }
+        .navigation a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Inventory Management</h1>
+    
+    <div class="main-content">
+        <div class="navigation">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="/categories">View All Categories</a></li>
+                <li><a href="/items">View All Items</a></li>
+                <li><a href="#" onclick="toggleForm('categoryForm')">Add Category</a></li>
+                <li><a href="#" onclick="toggleForm('itemForm')">Add Item</a></li>
+            </ul>
+        </div>
+
+        <div class="forms">
+            <div id="categoryForm" class="form-container">
+                <h3>Add New Category</h3>
+                <form action="/categories" method="POST">
+                    <div>
+                        <label for="categoryName">Name:</label>
+                        <input type="text" id="categoryName" name="name" required>
+                    </div>
+                    <div>
+                        <label for="categoryDescription">Description:</label>
+                        <textarea id="categoryDescription" name="description" required></textarea>
+                    </div>
+                    <button type="submit">Add Category</button>
+                </form>
+            </div>
+
+            <div id="itemForm" class="form-container">
+                <h3>Add New Item</h3>
+                <form action="/items" method="POST">
+                    <div>
+                        <label for="itemName">Name:</label>
+                        <input type="text" id="itemName" name="name" required>
+                    </div>
+                    <div>
+                        <label for="itemDescription">Description:</label>
+                        <textarea id="itemDescription" name="description" required></textarea>
+                    </div>
+                    <div>
+                        <label for="itemQuantity">Quantity:</label>
+                        <input type="number" id="itemQuantity" name="quantity" required>
+                    </div>
+                    <div>
+                        <label for="itemPrice">Price:</label>
+                        <input type="number" id="itemPrice" name="price" step="0.01" required>
+                    </div>
+                    <div>
+                        <label for="itemCategory">Category:</label>
+                        <select id="itemCategory" name="category_id" required>
+                            <% categories.forEach(function(category) { %>
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <button type="submit">Add Item</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formId) {
+            var form = document.getElementById(formId);
+            if (form.style.display === "none" || form.style.display === "") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
