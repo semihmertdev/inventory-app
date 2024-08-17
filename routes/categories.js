@@ -28,6 +28,21 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+// GET category details and associated items
+router.get('/:id', async (req, res) => {
+  try {
+    const { rows: [category] } = await db.query('SELECT * FROM categories WHERE id = $1', [req.params.id]);
+    if (!category) {
+      return res.status(404).send('Category not found');
+    }
+    const { rows: items } = await db.query('SELECT * FROM items WHERE category_id = $1', [req.params.id]);
+    res.render('categories/show', { category, items });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // GET form to edit a category
 router.get('/:id/edit', async (req, res) => {
   try {

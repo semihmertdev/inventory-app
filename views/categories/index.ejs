@@ -8,7 +8,7 @@
   <ul>
     <% categories.forEach(category => { %>
       <li>
-        <%= category.name %> - <%= category.description %>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a> - <%= category.description %>
         <form action="/categories/<%= category.id %>/delete" method="get" style="display:inline;">
           <button type="submit">Delete</button>
         </form>

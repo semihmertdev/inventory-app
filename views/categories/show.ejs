@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= category.name %></title>
+</head>
+<body>
+  <h1><%= category.name %></h1>
+  <p><%= category.description %></p>
+  
+  <h2>Items in this category:</h2>
+  <% if (items.length > 0) { %>
+    <ul>
+      <% items.forEach(item => { %>
+        <li>
+          <%= item.name %> - <%= item.description %> 
+          (Quantity: <%= item.quantity %>, Price: <%= item.price %>)
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No items found in this category.</p>
+  <% } %>
+
+  <a href="/categories">Back to Categories</a>
+  <a href="/">Back to Home</a>
+</body>
+</html>
