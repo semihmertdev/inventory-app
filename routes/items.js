@@ -5,7 +5,11 @@ const db = require('../db');
 // GET all items
 router.get('/', async (req, res) => {
   try {
-    const { rows } = await db.query('SELECT items.*, categories.name AS category_name FROM items LEFT JOIN categories ON items.category_id = categories.id');
+    const { rows } = await db.query(
+      `SELECT items.*, categories.name AS category_name 
+       FROM items 
+       LEFT JOIN categories ON items.category_id = categories.id`
+    );
     res.render('items/index', { items: rows });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -27,8 +31,10 @@ router.get('/new', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { name, description, quantity, price, category_id } = req.body;
-    await db.query('INSERT INTO items (name, description, quantity, price, category_id) VALUES ($1, $2, $3, $4, $5)', 
-      [name, description, quantity, price, category_id]);
+    await db.query(
+      'INSERT INTO items (name, description, quantity, price, category_id) VALUES ($1, $2, $3, $4, $5)',
+      [name, description, quantity, price, category_id]
+    );
     res.redirect('/items');
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -50,8 +56,10 @@ router.get('/:id/edit', async (req, res) => {
 router.post('/:id', async (req, res) => {
   try {
     const { name, description, quantity, price, category_id } = req.body;
-    await db.query('UPDATE items SET name = $1, description = $2, quantity = $3, price = $4, category_id = $5 WHERE id = $6', 
-      [name, description, quantity, price, category_id, req.params.id]);
+    await db.query(
+      'UPDATE items SET name = $1, description = $2, quantity = $3, price = $4, category_id = $5 WHERE id = $6',
+      [name, description, quantity, price, category_id, req.params.id]
+    );
     res.redirect('/items');
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -73,6 +81,26 @@ router.post('/:id/delete', async (req, res) => {
   try {
     await db.query('DELETE FROM items WHERE id = $1', [req.params.id]);
     res.redirect('/items');
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET detailed information for a specific item
+router.get('/:id', async (req, res) => {
+  try {
+    const { rows: itemRows } = await db.query(
+      `SELECT items.*, categories.name AS category_name 
+       FROM items 
+       LEFT JOIN categories ON items.category_id = categories.id 
+       WHERE items.id = $1`,
+      [req.params.id]
+    );
+    if (itemRows.length > 0) {
+      res.render('items/detail', { item: itemRows[0] });
+    } else {
+      res.status(404).send('Item not found');
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

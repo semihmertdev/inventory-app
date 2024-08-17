@@ -16,7 +16,7 @@
     </tr>
     <% items.forEach(item => { %>
       <tr>
-        <td><%= item.name %></td>
+        <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
         <td><%= item.description %></td>
         <td><%= item.quantity %></td>
         <td><%= item.price %></td>
