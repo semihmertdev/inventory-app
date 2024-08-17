@@ -7,9 +7,16 @@
   <h1>Categories</h1>
   <ul>
     <% categories.forEach(category => { %>
-      <li><%= category.name %> - <%= category.description %></li>
+      <li>
+        <%= category.name %> - <%= category.description %>
+        <form action="/categories/<%= category.id %>/delete" method="get" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+        <a href="/categories/<%= category.id %>/edit">Edit</a>
+      </li>
     <% }); %>
   </ul>
+  <a href="/categories/new">Add New Category</a>
   <a href="/">Back to Home</a>
 </body>
 </html>

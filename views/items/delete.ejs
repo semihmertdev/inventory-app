@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Item</title>
+</head>
+<body>
+  <h1>Delete Item</h1>
+  <p>Are you sure you want to delete the item "<%= item.name %>"?</p>
+  <form action="/items/<%= item.id %>/delete" method="post">
+    <button type="submit">Yes, delete it</button>
+    <a href="/items">Cancel</a>
+  </form>
+</body>
+</html>

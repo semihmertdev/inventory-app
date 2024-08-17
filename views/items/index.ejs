@@ -12,6 +12,7 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Category</th>
+      <th>Actions</th>
     </tr>
     <% items.forEach(item => { %>
       <tr>
@@ -20,9 +21,16 @@
         <td><%= item.quantity %></td>
         <td><%= item.price %></td>
         <td><%= item.category_name %></td>
+        <td>
+          <form action="/items/<%= item.id %>/delete" method="get" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+          <a href="/items/<%= item.id %>/edit">Edit</a>
+        </td>
       </tr>
     <% }); %>
   </table>
+  <a href="/items/new">Add New Item</a>
   <a href="/">Back to Home</a>
 </body>
 </html>

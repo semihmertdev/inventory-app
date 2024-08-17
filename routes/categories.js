@@ -38,7 +38,7 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
-// POST to update a category (using POST instead of PUT for simplicity)
+// POST to update a category
 router.post('/:id', async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -49,7 +49,20 @@ router.post('/:id', async (req, res) => {
   }
 });
 
-// POST to delete a category (using POST instead of DELETE for simplicity)
+// GET form to confirm category deletion
+router.get('/:id/delete', async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM categories WHERE id = $1', [req.params.id]);
+    if (rows.length === 0) {
+      return res.status(404).send('Category not found');
+    }
+    res.render('categories/delete', { category: rows[0] });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST to delete a category
 router.post('/:id/delete', async (req, res) => {
   try {
     const { rows } = await db.query('SELECT COUNT(*) FROM items WHERE category_id = $1', [req.params.id]);

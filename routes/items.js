@@ -45,7 +45,7 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
-// POST to update an item (using POST instead of PUT for simplicity)
+// POST to update an item
 router.post('/:id', async (req, res) => {
   try {
     const { name, description, quantity, price, category_id } = req.body;
@@ -57,7 +57,17 @@ router.post('/:id', async (req, res) => {
   }
 });
 
-// POST to delete an item (using POST instead of DELETE for simplicity)
+// GET form to confirm item deletion
+router.get('/:id/delete', async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM items WHERE id = $1', [req.params.id]);
+    res.render('items/delete', { item: rows[0] });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST to delete an item
 router.post('/:id/delete', async (req, res) => {
   try {
     await db.query('DELETE FROM items WHERE id = $1', [req.params.id]);

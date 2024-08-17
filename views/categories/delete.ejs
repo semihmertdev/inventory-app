@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Category</title>
+</head>
+<body>
+  <h1>Delete Category</h1>
+  <p>Are you sure you want to delete the category "<%= category.name %>"?</p>
+  <form action="/categories/<%= category.id %>/delete" method="post">
+    <button type="submit">Yes, delete it</button>
+    <a href="/categories">Cancel</a>
+  </form>
+</body>
+</html>
