@@ -4,35 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
-    <style>
-        .form-container {
-            display: none;
-            margin-top: 20px;
-        }
-        .main-content {
-            display: flex;
-            justify-content: space-between;
-        }
-        .navigation, .forms {
-            width: 45%;
-        }
-        .navigation ul {
-            list-style: none;
-            padding: 0;
-        }
-        .navigation ul li {
-            margin: 10px 0;
-        }
-        .navigation a {
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .navigation a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Updated path -->
 </head>
 <body>
     <h1>Welcome to Inventory Management</h1>
@@ -96,16 +68,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleForm(formId) {
-            var form = document.getElementById(formId);
-            if (form.style.display === "none" || form.style.display === "") {
-                form.style.display = "block";
-            } else {
-                form.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>
