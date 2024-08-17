@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const upload = require('../middleware/upload'); // Import multer middleware
 
 // GET all items
 router.get('/', async (req, res) => {
@@ -27,13 +28,14 @@ router.get('/new', async (req, res) => {
   }
 });
 
-// POST to create a new item
-router.post('/', async (req, res) => {
+// POST to create a new item with file upload
+router.post('/', upload.single('photo'), async (req, res) => {
   try {
     const { name, description, quantity, price, category_id } = req.body;
+    const photo_url = req.file ? `/uploads/${req.file.filename}` : null;
     await db.query(
-      'INSERT INTO items (name, description, quantity, price, category_id) VALUES ($1, $2, $3, $4, $5)',
-      [name, description, quantity, price, category_id]
+      'INSERT INTO items (name, description, quantity, price, category_id, photo_url) VALUES ($1, $2, $3, $4, $5, $6)',
+      [name, description, quantity, price, category_id, photo_url]
     );
     res.redirect('/items');
   } catch (err) {
@@ -52,13 +54,14 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
-// POST to update an item
-router.post('/:id', async (req, res) => {
+// POST to update an item with file upload
+router.post('/:id', upload.single('photo'), async (req, res) => {
   try {
     const { name, description, quantity, price, category_id } = req.body;
+    const photo_url = req.file ? `/uploads/${req.file.filename}` : req.body.existing_photo;
     await db.query(
-      'UPDATE items SET name = $1, description = $2, quantity = $3, price = $4, category_id = $5 WHERE id = $6',
-      [name, description, quantity, price, category_id, req.params.id]
+      'UPDATE items SET name = $1, description = $2, quantity = $3, price = $4, category_id = $5, photo_url = $6 WHERE id = $7',
+      [name, description, quantity, price, category_id, photo_url, req.params.id]
     );
     res.redirect('/items');
   } catch (err) {

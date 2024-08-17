@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Item Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= item.name %> Details</title>
 </head>
 <body>
-  <h1>Item Details</h1>
-  <p><strong>Name:</strong> <%= item.name %></p>
-  <p><strong>Description:</strong> <%= item.description %></p>
-  <p><strong>Quantity:</strong> <%= item.quantity %></p>
-  <p><strong>Price:</strong> <%= item.price %></p>
-  <p><strong>Category:</strong> <%= item.category_name %></p>
-  <a href="/items/<%= item.id %>/edit">Edit Item</a>
-  <form action="/items/<%= item.id %>/delete" method="post" style="display:inline;">
-    <button type="submit">Delete Item</button>
-  </form>
-  <a href="/items">Back to Items List</a>
-  <a href="/">Back to Home</a>
+    <h1><%= item.name %> Details</h1>
+    <p><strong>Name:</strong> <%= item.name %></p>
+    <p><strong>Description:</strong> <%= item.description %></p>
+    <p><strong>Quantity:</strong> <%= item.quantity %></p>
+    <p><strong>Price:</strong> $<%= item.price %></p>
+    <p><strong>Category:</strong> <%= item.category_name %></p>
+    <% if (item.photo_url) { %>
+        <img src="<%= item.photo_url %>" alt="Item Photo" style="max-width: 300px;">
+    <% } %>
+    <a href="/items/<%= item.id %>/edit">Edit Item</a>
+    <form action="/items/<%= item.id %>/delete" method="post" style="display:inline;">
+        <button type="submit">Delete Item</button>
+    </form>
+    <a href="/items">Back to Items List</a>
+    <a href="/">Back to Home</a>
 </body>
 </html>
