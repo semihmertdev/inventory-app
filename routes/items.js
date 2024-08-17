@@ -16,7 +16,8 @@ router.get('/', async (req, res) => {
 router.get('/new', async (req, res) => {
   try {
     const { rows } = await db.query('SELECT * FROM categories');
-    res.render('items/new', { categories: rows });
+    const selectedCategoryId = req.query.category_id || null;
+    res.render('items/new', { categories: rows, selectedCategoryId });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
