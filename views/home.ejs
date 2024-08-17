@@ -23,7 +23,7 @@
         <div class="forms">
             <div id="categoryForm" class="form-container">
                 <h3>Add New Category</h3>
-                <form action="/categories" method="POST">
+                <form action="/categories" method="POST" enctype="multipart/form-data">
                     <div>
                         <label for="categoryName">Name:</label>
                         <input type="text" id="categoryName" name="name" required>
@@ -32,13 +32,17 @@
                         <label for="categoryDescription">Description:</label>
                         <textarea id="categoryDescription" name="description" required></textarea>
                     </div>
+                    <div>
+                        <label for="categoryPhoto">Photo:</label>
+                        <input type="file" id="categoryPhoto" name="photo">
+                    </div>
                     <button type="submit">Add Category</button>
                 </form>
             </div>
 
             <div id="itemForm" class="form-container">
                 <h3>Add New Item</h3>
-                <form action="/items" method="POST">
+                <form action="/items" method="POST" enctype="multipart/form-data">
                     <div>
                         <label for="itemName">Name:</label>
                         <input type="text" id="itemName" name="name" required>
@@ -62,6 +66,10 @@
                                 <option value="<%= category.id %>"><%= category.name %></option>
                             <% }); %>
                         </select>
+                    </div>
+                    <div>
+                        <label for="itemPhoto">Photo:</label>
+                        <input type="file" id="itemPhoto" name="photo">
                     </div>
                     <button type="submit">Add Item</button>
                 </form>

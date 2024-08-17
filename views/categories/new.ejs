@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Create New Category</h1>
-    <form action="/categories" method="POST">
+    <form action="/categories" method="POST" enctype="multipart/form-data">
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -15,6 +15,10 @@
         <div>
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo">
         </div>
         <button type="submit">Create Category</button>
     </form>

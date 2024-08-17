@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title><%= category.name %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category.name %></title>
 </head>
 <body>
-  <h1><%= category.name %></h1>
-  <p><%= category.description %></p>
-  
-  <h2>Items in this category:</h2>
-  <% if (items.length > 0) { %>
-    <ul>
-      <% items.forEach(item => { %>
-        <li>
-          <%= item.name %> - <%= item.description %> 
-          (Quantity: <%= item.quantity %>, Price: <%= item.price %>)
-        </li>
-      <% }); %>
-    </ul>
-  <% } else { %>
-    <p>No items found in this category.</p>
-  <% } %>
+    <h1><%= category.name %></h1>
+    <p><%= category.description %></p>
+    <% if (category.photo_url) { %>
+        <img src="<%= category.photo_url %>" alt="Category Photo" style="max-width: 300px;">
+    <% } %>
 
-  <!-- Add Item link -->
-  <a href="/items/new?category_id=<%= category.id %>">Add Item to this Category</a>
+    <h2>Items in this category:</h2>
+    <% if (items.length > 0) { %>
+        <ul>
+            <% items.forEach(item => { %>
+                <li>
+                    <%= item.name %> - <%= item.description %> 
+                    (Quantity: <%= item.quantity %>, Price: <%= item.price %>)
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No items found in this category.</p>
+    <% } %>
 
-  <br><br>
-  <a href="/categories">Back to Categories</a>
-  <a href="/">Back to Home</a>
+    <!-- Add Item link -->
+    <a href="/items/new?category_id=<%= category.id %>">Add Item to this Category</a>
+
+    <br><br>
+    <a href="/categories">Back to Categories</a>
+    <a href="/">Back to Home</a>
 </body>
 </html>

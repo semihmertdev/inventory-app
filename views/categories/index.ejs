@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Categories</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
 </head>
 <body>
-  <h1>Categories</h1>
-  <ul>
-    <% categories.forEach(category => { %>
-      <li>
-        <a href="/categories/<%= category.id %>"><%= category.name %></a> - <%= category.description %>
-        <form action="/categories/<%= category.id %>/delete" method="get" style="display:inline;">
-          <button type="submit">Delete</button>
-        </form>
-        <a href="/categories/<%= category.id %>/edit">Edit</a>
-      </li>
-    <% }); %>
-  </ul>
-  <a href="/categories/new">Add New Category</a>
-  <a href="/">Back to Home</a>
+    <h1>Categories</h1>
+    <ul>
+        <% categories.forEach(category => { %>
+            <li>
+                <a href="/categories/<%= category.id %>"><%= category.name %></a>
+                <% if (category.photo_url) { %>
+                    <img src="<%= category.photo_url %>" alt="Category Photo" style="max-width: 100px;">
+                <% } %>
+                - <%= category.description %>
+                <form action="/categories/<%= category.id %>/delete" method="get" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <a href="/categories/<%= category.id %>/edit">Edit</a>
+            </li>
+        <% }); %>
+    </ul>
+    <a href="/categories/new">Add New Category</a>
+    <a href="/">Back to Home</a>
 </body>
 </html>
