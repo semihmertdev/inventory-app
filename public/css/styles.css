@@ -59,3 +59,35 @@
 .form-container.show {
   display: block; /* Form görünür hale gelir */
 }
+
+.banner {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 50px 20px;
+  margin-bottom: 20px;
+}
+
+.banner h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.banner-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+}
+
+.banner-button:hover {
+  background-color: #0056b3;
+}

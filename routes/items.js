@@ -6,10 +6,12 @@ const upload = require('../middleware/upload'); // Import multer middleware
 // GET all items
 router.get('/', async (req, res) => {
   try {
-    const { rows: categories } = await db.query('SELECT * FROM categories');
-    const { rows: featuredCategories } = await db.query('SELECT * FROM categories ORDER BY RANDOM() LIMIT 3');
-    const { rows: featuredItems } = await db.query('SELECT * FROM items ORDER BY RANDOM() LIMIT 3');
-    res.render('home', { categories, featuredCategories, featuredItems });
+    const { rows } = await db.query(
+      `SELECT items.*, categories.name AS category_name 
+       FROM items 
+       LEFT JOIN categories ON items.category_id = categories.id`
+    );
+    res.render('items/index', { items: rows });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
