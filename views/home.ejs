@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="main-content">
 
+    <div class="main-content">
 
         <div class="navigation">
             <ul>
@@ -20,9 +20,21 @@
             </ul>
         </div>
 
-        <!-- New Featured Categories Section -->
+        <div class="main-banner">
+            <img src="https://images.pexels.com/photos/194511/pexels-photo-194511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="sa">
+            <div class="banner-content">
+                <h1>Welcome to Inventory Management</h1>
+                <p>Explore our wide range of categories and items</p>
+                <a href="/categories" class="banner-button">View All Categories</a>
+            </div>
+        </div>
+
+        <!-- Featured Categories Section -->
         <div class="featured-categories">
-            <h2>Featured Categories</h2>
+            <div class="banner categories-banner">
+                <h2>Featured Categories</h2>
+                <p>Explore our curated selection of top categories</p>
+            </div>
             <div class="category-list">
                 <% featuredCategories.forEach(function(category) { %>
                     <div class="category-card">
@@ -35,9 +47,12 @@
             </div>
         </div>
 
-        <!-- New Featured Items Section -->
+        <!-- Featured Items Section -->
         <div class="featured-items">
-            <h2>Featured Items</h2>
+            <div class="banner items-banner">
+                <h2>Featured Items</h2>
+                <p>Explore our curated selection of top items</p>
+            </div>
             <div class="item-list">
                 <% featuredItems.forEach(function(item) { %>
                     <div class="item-card">
@@ -52,58 +67,62 @@
         </div>
 
         <div class="forms">
-            <div id="categoryForm" class="form-container">
-                <h3>Add New Category</h3>
-                <form action="/categories" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <label for="categoryName">Name:</label>
-                        <input type="text" id="categoryName" name="name" required>
-                    </div>
-                    <div>
-                        <label for="categoryDescription">Description:</label>
-                        <textarea id="categoryDescription" name="description" required></textarea>
-                    </div>
-                    <div>
-                        <label for="categoryPhoto">Photo:</label>
-                        <input type="file" id="categoryPhoto" name="photo">
-                    </div>
-                    <button type="submit">Add Category</button>
-                </form>
+            <div id="categoryForm" class="collapsible-form">
+                <div class="form-header" onclick="toggleForm('categoryForm')">Add New Category</div>
+                <div class="form-container">
+                    <form action="/categories" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <label for="categoryName">Name:</label>
+                            <input type="text" id="categoryName" name="name" required>
+                        </div>
+                        <div>
+                            <label for="categoryDescription">Description:</label>
+                            <textarea id="categoryDescription" name="description" required></textarea>
+                        </div>
+                        <div>
+                            <label for="categoryPhoto">Photo:</label>
+                            <input type="file" id="categoryPhoto" name="photo">
+                        </div>
+                        <button type="submit">Add Category</button>
+                    </form>
+                </div>
             </div>
 
-            <div id="itemForm" class="form-container">
-                <h3>Add New Item</h3>
-                <form action="/items" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <label for="itemName">Name:</label>
-                        <input type="text" id="itemName" name="name" required>
-                    </div>
-                    <div>
-                        <label for="itemDescription">Description:</label>
-                        <textarea id="itemDescription" name="description" required></textarea>
-                    </div>
-                    <div>
-                        <label for="itemQuantity">Quantity:</label>
-                        <input type="number" id="itemQuantity" name="quantity" required>
-                    </div>
-                    <div>
-                        <label for="itemPrice">Price:</label>
-                        <input type="number" id="itemPrice" name="price" step="0.01" required>
-                    </div>
-                    <div>
-                        <label for="itemCategory">Category:</label>
-                        <select id="itemCategory" name="category_id" required>
-                            <% categories.forEach(function(category) { %>
-                                <option value="<%= category.id %>"><%= category.name %></option>
-                            <% }); %>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="itemPhoto">Photo:</label>
-                        <input type="file" id="itemPhoto" name="photo">
-                    </div>
-                    <button type="submit">Add Item</button>
-                </form>
+            <div id="itemForm" class="collapsible-form">
+                <div class="form-header" onclick="toggleForm('itemForm')">Add New Item</div>
+                <div class="form-container">
+                    <form action="/items" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <label for="itemName">Name:</label>
+                            <input type="text" id="itemName" name="name" required>
+                        </div>
+                        <div>
+                            <label for="itemDescription">Description:</label>
+                            <textarea id="itemDescription" name="description" required></textarea>
+                        </div>
+                        <div>
+                            <label for="itemQuantity">Quantity:</label>
+                            <input type="number" id="itemQuantity" name="quantity" required>
+                        </div>
+                        <div>
+                            <label for="itemPrice">Price:</label>
+                            <input type="number" id="itemPrice" name="price" step="0.01" required>
+                        </div>
+                        <div>
+                            <label for="itemCategory">Category:</label>
+                            <select id="itemCategory" name="category_id" required>
+                                <% categories.forEach(function(category) { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="itemPhoto">Photo:</label>
+                            <input type="file" id="itemPhoto" name="photo">
+                        </div>
+                        <button type="submit">Add Item</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

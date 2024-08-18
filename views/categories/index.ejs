@@ -6,6 +6,18 @@
     <title>Categories</title>
 </head>
 <body>
+
+     <!-- Navigation Section -->
+     <div class="navigation">
+        <ul>
+            <li><a href="/categories">View All Categories</a></li>
+            <li><a href="/items">View All Items</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="#" onclick="toggleForm('categoryForm')">Add Category</a></li>
+            <li><a href="#" onclick="toggleForm('itemForm')">Add Item</a></li>
+        </ul>
+    </div>
+
     <h1>Categories</h1>
     <ul>
         <% categories.forEach(category => { %>
