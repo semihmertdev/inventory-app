@@ -25,8 +25,10 @@ app.use('/items', itemsRouter);
 // Home route
 app.get('/', async (req, res) => {
   try {
-    const { rows } = await db.query('SELECT * FROM categories');
-    res.render('home', { categories: rows });
+    const { rows: categories } = await db.query('SELECT * FROM categories');
+    const { rows: featuredCategories } = await db.query('SELECT * FROM categories ORDER BY RANDOM() LIMIT 3');
+    const { rows: featuredItems } = await db.query('SELECT * FROM items ORDER BY RANDOM() LIMIT 3');
+    res.render('home', { categories, featuredCategories, featuredItems });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

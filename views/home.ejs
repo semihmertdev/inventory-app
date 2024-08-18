@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Updated path -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Welcome to Inventory Management</h1>
-    
     <div class="main-content">
         <div class="navigation">
             <h2>Navigation</h2>
@@ -18,6 +16,37 @@
                 <li><a href="#" onclick="toggleForm('categoryForm')">Add Category</a></li>
                 <li><a href="#" onclick="toggleForm('itemForm')">Add Item</a></li>
             </ul>
+        </div>
+
+        <!-- New Featured Categories Section -->
+        <div class="featured-categories">
+            <h2>Featured Categories</h2>
+            <div class="category-list">
+                <% featuredCategories.forEach(function(category) { %>
+                    <div class="category-card">
+                        <img src="<%= category.photo_url %>" alt="<%= category.name %>">
+                        <h3><%= category.name %></h3>
+                        <p><%= category.description %></p>
+                        <a href="/categories/<%= category.id %>">View Category</a>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+
+        <!-- New Featured Items Section -->
+        <div class="featured-items">
+            <h2>Featured Items</h2>
+            <div class="item-list">
+                <% featuredItems.forEach(function(item) { %>
+                    <div class="item-card">
+                        <img src="<%= item.photo_url %>" alt="<%= item.name %>">
+                        <h3><%= item.name %></h3>
+                        <p><%= item.description %></p>
+                        <p>Price: $<%= item.price %></p>
+                        <a href="/items/<%= item.id %>">View Item</a>
+                    </div>
+                <% }); %>
+            </div>
         </div>
 
         <div class="forms">
@@ -76,6 +105,6 @@
             </div>
         </div>
     </div>
-    <script src="/js/script.js"></script> <!-- Updated path -->
+    <script src="/js/script.js"></script>
 </body>
 </html>
