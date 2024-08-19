@@ -5,26 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Matemasie&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="navigation">
-        <ul>
-            <li><a href="/categories">View All Categories</a></li>
-            <li><a href="/items">View All Items</a></li>
-            <li><a href="/">Home</a></li>
-            <li><a href="#" onclick="toggleForm('categoryForm')">Add Category</a></li>
-            <li><a href="#" onclick="toggleForm('itemForm')">Add Item</a></li>
-        </ul>
-    </div>
     
     <div class="main-content">
 
+        <div class="navigation">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/items">Items</a></li>
+                <li><a href="#" onclick="toggleForm('categoryForm')">Add Category</a></li>
+                <li><a href="#" onclick="toggleForm('itemForm')">Add Item</a></li>
+            </ul>
+        </div>
+
         <div class="main-banner">
-            <img src="https://images.pexels.com/photos/194511/pexels-photo-194511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="sa">
+            <video width="100%" height="auto" autoplay loop muted playsinline>
+                <source src="https://videos.pexels.com/video-files/7914827/7914827-hd_1920_1080_30fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              
             <div class="banner-content">
-                <h1>Welcome to Inventory Management</h1>
-                <p>Explore our wide range of categories and items</p>
-                <a href="/categories" class="banner-button">View All Categories</a>
+                <a href="/items" class="banner-button">View All Games</a>
             </div>
         </div>
 
@@ -36,12 +41,10 @@
             </div>
             <div class="category-list">
                 <% featuredCategories.forEach(function(category) { %>
-                    <div class="category-card">
+                    <a href="/categories/<%= category.id %>" class="category-card">
                         <img src="<%= category.photo_url %>" alt="<%= category.name %>">
                         <h3><%= category.name %></h3>
-                        <p><%= category.description %></p>
-                        <a href="/categories/<%= category.id %>">View Category</a>
-                    </div>
+                    </a>                    
                 <% }); %>
             </div>
         </div>
@@ -54,13 +57,10 @@
             </div>
             <div class="item-list">
                 <% featuredItems.forEach(function(item) { %>
-                    <div class="item-card">
+                    <a href="/items/<%= item.id %>" class="item-card">
                         <img src="<%= item.photo_url %>" alt="<%= item.name %>">
                         <h3><%= item.name %></h3>
-                        <p><%= item.description %></p>
-                        <p>Price: $<%= item.price %></p>
-                        <a href="/items/<%= item.id %>">View Item</a>
-                    </div>
+                    </a>                    
                 <% }); %>
             </div>
         </div>

@@ -1,231 +1,128 @@
-/* Base Reset and Box-Sizing */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
+/* Global Styles */
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Root Theme Colors and Variables */
-:root {
-  --primary-color: #4CAF50;
-  --secondary-color: #f9f9f9;
-  --text-color: #333;
-  --accent-color: #ff5722;
-  --border-radius: 8px;
-  --transition-speed: 0.3s;
+/* 2. Remove default margin */
+* {
+  margin: 0;
 }
 
-/* Typography and General Styles */
+/* 3. Add accessible line-height and improve text rendering */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: "Bungee Tint", sans-serif;
 }
 
-/* Media Defaults */
-img,
-picture,
-video,
-canvas,
-svg {
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
 
-/* Remove Built-in Form Typography Styles */
-input,
-button,
-textarea,
-select {
+/* 6. Remove built-in form typography styles */
+input, button, textarea, select {
   font: inherit;
 }
 
-/* Avoid Text Overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
-/* Root Stacking Context */
-#root,
-#__next {
+/* 8. Create a root stacking context */
+#root, #__next {
   isolation: isolate;
 }
 
-/* Main Content Layout */
-.main-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Navigation Menu */
+/* Navigation */
 .navigation {
-  margin-bottom: 20px;
-  background-color: var(--primary-color);
-  border-radius: var(--border-radius);
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  z-index: 1000;
+  border-bottom: 2px solid red;
 }
 
 .navigation ul {
-  list-style-type: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.navigation li a {
-  display: block;
-  padding: 15px 20px;
-  color: white;
+.navigation ul li a {
   text-decoration: none;
-  transition: background-color var(--transition-speed);
+  color: #333;
 }
 
-.navigation li a:hover {
-  background-color: var(--accent-color);
-}
-
-/* Banner Styles */
-.banner {
-  background-color: #f8f9fa;
-  padding: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  border-radius: var(--border-radius);
-}
-
-.banner h2 {
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
-.banner p {
-  color: #666;
-}
-
+/* Main Banner */
 .main-banner {
   position: relative;
-  text-align: center;
-  color: white;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.main-banner img {
-  width: 100%;
+.main-banner video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
   height: auto;
-  display: block;
+  transform: translate(-50%, -50%);
+  min-height: 100%;
 }
 
 .banner-content {
   position: absolute;
-  top: 50%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent background */
-  padding: 20px;
-  border-radius: 10px; /* Optional: adds rounded corners */
-  z-index: 1;
-}
-
-.banner-content h1,
-.banner-content p {
-  margin: 0;
-}
-
-.categories-banner {
-  background-color: #e9ecef;
-}
-
-.items-banner {
-  background-color: #dee2e6;
-}
-
-/* Featured Sections */
-.featured-categories,
-.featured-items {
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.featured-categories h2,
-.featured-items h2 {
-  margin-bottom: 15px;
   text-align: center;
-  font-size: 2rem;
-  color: var(--primary-color);
-}
-
-/* Flexbox for Category and Item Cards */
-.category-list,
-.item-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.category-card,
-.item-card {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed);
-  overflow: hidden;
-  width: 100%;
-  max-width: 300px;
-  text-align: center;
-}
-
-.category-card img,
-.item-card img {
-  width: 100%;
-  height: auto;
-}
-
-.category-card:hover,
-.item-card:hover {
-  transform: translateY(-10px);
-}
-
-.category-card h3,
-.item-card h3 {
-  padding: 10px 15px;
-  font-size: 1.5rem;
-  color: var(--text-color);
-}
-
-.category-card p,
-.item-card p {
-  padding: 0 15px;
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
-.category-card a,
-.item-card a {
-  display: block;
-  padding: 10px;
-  background-color: var(--primary-color);
   color: white;
-  text-decoration: none;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-  transition: background-color var(--transition-speed);
+  font-size: 2rem;
 }
 
-.category-card a:hover,
-.item-card a:hover {
-  background-color: var(--accent-color);
+.banner-content p {
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  font-family: "Bungee Tint", sans-serif;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.banner-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.banner-button:hover {
+  transform: scale(1.2);
+}
+
+.banner-button:active {
+  transform: scale(1);
 }
 
 /* Forms */
@@ -244,7 +141,7 @@ h6 {
   transform: translate(-50%, -50%);
   max-width: 90%;
   background-color: white;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -257,7 +154,7 @@ h6 {
 }
 
 .collapsible-form .form-container {
-  max-height: 500px; /* Adjust this value based on form content */
+  max-height: 500px;
   overflow-y: auto;
 }
 
@@ -282,4 +179,117 @@ h6 {
   right: 10px;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+/* Featured Categories Section */
+.featured-categories {
+  height: 100vh;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 20px;
+}
+
+.featured-categories .category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.featured-categories .category-card {
+  display: block;
+  position: relative; /* Ensure positioning context for text */
+  overflow: hidden;
+  width: 250px; /* Fixed width for cards */
+  height: 300px; /* Fixed height for cards to ensure consistency */
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.featured-categories .category-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image covers the card */
+  z-index: 1; /* Place image behind text */
+}
+
+.featured-categories .category-card h3,
+.featured-categories .category-card p {
+  position: relative; /* Ensure text is above the image */
+  z-index: 2; /* Place text above image */
+  color: #fff; /* Default text color */
+  padding: 10px;
+}
+
+.featured-categories .category-card:hover {
+  background-color: rgba(0, 123, 255, 0.7); /* Semi-transparent background on hover */
+  color: #fff;
+}
+
+/* Featured Items Section */
+.featured-items {
+  height: 100vh;
+  background-color: #fff;
+}
+
+.featured-items .banner {
+  text-align: center;
+}
+
+.featured-items .banner h2 {
+  font-family: "Bungee Tint", sans-serif;
+  font-size: 2rem;
+  color: #333;
+}
+
+.featured-items .banner p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.featured-items .item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.featured-items .item-card {
+  display: block;
+  position: relative; /* Ensure positioning context for text */
+  overflow: hidden;
+  width: 250px;
+  height: 300px; /* Fixed height for cards to ensure consistency */
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.featured-items .item-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image covers the card */
+  z-index: 1; /* Place image behind text */
+}
+
+.featured-items .item-card h3,
+.featured-items .item-card p {
+  position: relative; /* Ensure text is above the image */
+  z-index: 2; /* Place text above image */
+  color: #fff; /* Default text color */
+  padding: 10px;
+}
+
+.featured-items .item-card:hover {
+  background-color: rgba(0, 123, 255, 0.7); /* Semi-transparent background on hover */
+  color: #fff;
 }
