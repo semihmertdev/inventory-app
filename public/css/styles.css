@@ -203,7 +203,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Featured Categories Section */
 .featured-categories {
-  height: 100vh;
+  height: 55vh;
   background-color: #f8f8f8;
   text-align: center;
   padding: 50px;
@@ -263,7 +263,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Featured Items Section */
 .featured-items {
-  height: 100vh;
+  height: 55vh;
   background-color: #fff;
   text-align: center;
   padding: 50px;
