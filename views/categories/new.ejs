@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Category</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Create New Category</h1>
-    <form action="/categories" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <div class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/items">Items</a></li>
+        </ul>
+    </div>
+
+    <div class="category-main">
+        <div class="new-category">
+        <h1>Create New Category</h1>
+
+        <form action="/categories" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div>
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" name="photo">
+            </div>
+            <button type="submit">Create Category</button>
+        </form>
         </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-        </div>
-        <div>
-            <label for="photo">Photo:</label>
-            <input type="file" id="photo" name="photo">
-        </div>
-        <button type="submit">Create Category</button>
-    </form>
+    </div>
+    
     <a href="/categories">Back to Categories</a>
 </body>
 </html>

@@ -4,42 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Item</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Create New Item</h1>
-    <form action="/items" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <div class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/items">Items</a></li>
+        </ul>
+    </div>
+
+    <div class="item-main">
+        <div class="new-item">
+            <h1>Create New Item</h1>
+
+            <form action="/items" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                </div>
+                <div>
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
+                </div>
+                <div>
+                    <label for="category_id">Category:</label>
+                    <select id="category_id" name="category_id" required>
+                        <% categories.forEach(function(category) { %>
+                            <option value="<%= category.id %>" <%= category.id == selectedCategoryId ? 'selected' : '' %>>
+                                <%= category.name %>
+                            </option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div>
+                    <label for="photo">Photo:</label>
+                    <input type="file" id="photo" name="photo">
+                </div>
+                <button type="submit">Create Item</button>
+            </form>
         </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-        </div>
-        <div>
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" required>
-        </div>
-        <div>
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="0.01" required>
-        </div>
-        <div>
-            <label for="category_id">Category:</label>
-            <select id="category_id" name="category_id" required>
-                <% categories.forEach(function(category) { %>
-                    <option value="<%= category.id %>" <%= category.id == selectedCategoryId ? 'selected' : '' %>>
-                        <%= category.name %>
-                    </option>
-                <% }); %>
-            </select>
-        </div>
-        <div>
-            <label for="photo">Photo:</label>
-            <input type="file" id="photo" name="photo">
-        </div>
-        <button type="submit">Create Item</button>
-    </form>
+    </div>
+    
     <a href="/items">Back to Items</a>
 </body>
 </html>
