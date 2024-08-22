@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= item.name %> Details</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1><%= item.name %> Details</h1>
-    <p><strong>Name:</strong> <%= item.name %></p>
-    <p><strong>Description:</strong> <%= item.description %></p>
-    <p><strong>Quantity:</strong> <%= item.quantity %></p>
-    <p><strong>Price:</strong> $<%= item.price %></p>
-    <p><strong>Category:</strong> <%= item.category_name %></p>
-    <% if (item.photo_url) { %>
-        <img src="<%= item.photo_url %>" alt="Item Photo" style="max-width: 300px;">
-    <% } %>
-    <a href="/items/<%= item.id %>/edit">Edit Item</a>
-    <form action="/items/<%= item.id %>/delete" method="post" style="display:inline;">
-        <button type="submit">Delete Item</button>
-    </form>
-    <a href="/items">Back to Items List</a>
-    <a href="/">Back to Home</a>
+
+    <div class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/items">Items</a></li>
+        </ul>
+    </div>
+
+    <div class="item-details-container">
+        <h1 class="item-title"><%= item.name %></h1>
+        <div class="item-info">
+            <p><strong>Name:</strong> <%= item.name %></p>
+            <p><strong>Description:</strong> <%= item.description %></p>
+            <p><strong>Quantity:</strong> <%= item.quantity %></p>
+            <p><strong>Price:</strong> $<%= item.price %></p>
+            <p><strong>Category:</strong> <%= item.category_name %></p>
+            <% if (item.photo_url) { %>
+                <img src="<%= item.photo_url %>" alt="Item Photo" class="item-photo">
+            <% } %>
+        </div>
+        <div class="actions">
+            <a href="/items/<%= item.id %>/edit" class="btn btn-edit">Edit Item</a>
+            <a href="/items/<%= item.id %>/delete" class="btn btn-delete">Delete Item</a>
+            <a href="/items" class="btn btn-back">Back to Items List</a>
+            <a href="/" class="btn btn-home">Back to Home</a>
+        </div>
+        
+    </div>
+    <script src="/js/script.js"></script>
 </body>
 </html>

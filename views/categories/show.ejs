@@ -4,35 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= category.name %></title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1><%= category.name %></h1>
-    <p><%= category.description %></p>
-    <% if (category.photo_url) { %>
-        <img src="<%= category.photo_url %>" alt="Category Photo" style="max-width: 300px;">
-    <% } %>
-
-    <h2>Items in this category:</h2>
-    <% if (items.length > 0) { %>
+    <div class="navigation">
         <ul>
-            <% items.forEach(item => { %>
-                <li>
-                    <%= item.name %> - <%= item.description %> 
-                    (Quantity: <%= item.quantity %>, Price: <%= item.price %>)
-                </li>
-            <% }); %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/items">Items</a></li>
         </ul>
-    <% } else { %>
-        <p>No items found in this category.</p>
-    <% } %>
+    </div>
 
-    <!-- Add Item link -->
-    <a href="/items/new?category_id=<%= category.id %>">Add Item to this Category</a>
-    <a href="/categories/<%= category.id %>/delete" style="display:inline;">Delete</a>
-    <a href="/categories/<%= category.id %>/edit" style="display:inline;">Edit</a>
+    <div class="category-details">
+        <div class="category-header">
+            <h1><%= category.name %></h1>
+            <p><%= category.description %></p>
+            <% if (category.photo_url) { %>
+                <img src="<%= category.photo_url %>" alt="Category Photo" class="category-photo">
+            <% } %>
+        </div>
 
-        <br><br>
-    <a href="/categories">Back to Categories</a>
-    <a href="/">Back to Home</a>
+        <h2>Items in this category:</h2>
+        <% if (items.length > 0) { %>
+            <div class="items-list">
+                <% items.forEach(item => { %>
+                    <div class="item-card">
+                        <img src="<%= item.photo_url %>" alt="<%= item.name %> Photo">
+                        <a href="/items/<%= item.id %>" class="item-card">
+                            <img src="<%= item.photo_url %>" alt="<%= item.name %>">
+                        </a>    
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p>No items in this category.</p>
+        <% } %>
+    </div>
+
+    <div class="actions">
+        <a href="/items/new">Add New Item</a>
+        <a href="/categories">Back to Categories</a>
+        <a href="/categories/<%= category.id %>/delete" class="btn btn-delete">Delete Category</a>
+    </div>
 </body>
 </html>
+
+
+
+

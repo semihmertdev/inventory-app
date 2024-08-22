@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Delete Category</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Category</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <h1>Delete Category</h1>
-  <p>Are you sure you want to delete the category "<%= category.name %>"?</p>
-  <form action="/categories/<%= category.id %>/delete" method="post">
-    <button type="submit">Yes, delete it</button>
-    <a href="/categories">Cancel</a>
-  </form>
+  <div class="delete-main">
+    <div class="delete-confirmation">
+      <h1>Delete Category</h1>
+      <p>Are you sure you want to delete the category "<%= category.name %>"?</p>
+      <form action="/categories/<%= category.id %>/delete" method="post">
+          <button type="submit" class="btn btn-danger">Yes, delete it</button>
+          <a href="/categories" class="btn btn-cancel">Cancel</a>
+      </form>
+  </div>
+  </div>
+    
 </body>
 </html>

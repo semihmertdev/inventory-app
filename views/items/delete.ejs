@@ -2,13 +2,19 @@
 <html>
 <head>
   <title>Delete Item</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <h1>Delete Item</h1>
-  <p>Are you sure you want to delete the item "<%= item.name %>"?</p>
-  <form action="/items/<%= item.id %>/delete" method="post">
-    <button type="submit">Yes, delete it</button>
-    <a href="/items">Cancel</a>
-  </form>
+  <div class="delete-main">
+    <div class="delete-confirmation">
+      <h1>Delete Item</h1>
+      <p>Are you sure you want to delete the item "<%= item.name %>"?</p>
+      <form action="/items/<%= item.id %>/delete" method="post">
+        <button type="submit" class="btn btn-danger">Yes, delete it</button>
+        <a href="/items" class="btn btn-cancel">Cancel</a>
+      </form>
+    </div>
+  </div>
+  
 </body>
 </html>
