@@ -28,8 +28,10 @@
 
     <!-- Add Item link -->
     <a href="/items/new?category_id=<%= category.id %>">Add Item to this Category</a>
+    <a href="/categories/<%= category.id %>/delete" style="display:inline;">Delete</a>
+    <a href="/categories/<%= category.id %>/edit" style="display:inline;">Edit</a>
 
-    <br><br>
+        <br><br>
     <a href="/categories">Back to Categories</a>
     <a href="/">Back to Home</a>
 </body>

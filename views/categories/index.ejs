@@ -17,84 +17,25 @@
         </ul>
     </div>
 
-    <h1>Categories</h1>
-    <ul>
-        <% categories.forEach(category => { %>
-            <li>
-                <a href="/categories/<%= category.id %>"><%= category.name %></a>
-                <% if (category.photo_url) { %>
-                    <img src="<%= category.photo_url %>" alt="Category Photo" style="max-width: 100px;">
-                <% } %>
-                - <%= category.description %>
-                <form action="/categories/<%= category.id %>/delete" method="get" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-                <a href="/categories/<%= category.id %>/edit">Edit</a>
-            </li>
-        <% }); %>
-    </ul>
-    <a href="/categories/new">Add New Category</a>
-    <a href="/">Back to Home</a>
-    
-    <div class="forms">
-        <div id="categoryForm" class="collapsible-form">
-            <div class="form-header" onclick="toggleForm('categoryForm')">Add New Category</div>
-            <div class="form-container">
-                <form action="/categories" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <label for="categoryName">Name:</label>
-                        <input type="text" id="categoryName" name="name" required>
-                    </div>
-                    <div>
-                        <label for="categoryDescription">Description:</label>
-                        <textarea id="categoryDescription" name="description" required></textarea>
-                    </div>
-                    <div>
-                        <label for="categoryPhoto">Photo:</label>
-                        <input type="file" id="categoryPhoto" name="photo">
-                    </div>
-                    <button type="submit">Add Category</button>
-                </form>
-            </div>
-        </div>
+    <div class="categories-main">
 
-        <div id="itemForm" class="collapsible-form">
-            <div class="form-header" onclick="toggleForm('itemForm')">Add New Item</div>
-            <div class="form-container">
-                <form action="/items" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <label for="itemName">Name:</label>
-                        <input type="text" id="itemName" name="name" required>
-                    </div>
-                    <div>
-                        <label for="itemDescription">Description:</label>
-                        <textarea id="itemDescription" name="description" required></textarea>
-                    </div>
-                    <div>
-                        <label for="itemQuantity">Quantity:</label>
-                        <input type="number" id="itemQuantity" name="quantity" required>
-                    </div>
-                    <div>
-                        <label for="itemPrice">Price:</label>
-                        <input type="number" id="itemPrice" name="price" step="0.01" required>
-                    </div>
-                    <div>
-                        <label for="itemCategory">Category:</label>
-                        <select id="itemCategory" name="category_id" required>
-                            <% categories.forEach(function(category) { %>
-                                <option value="<%= category.id %>"><%= category.name %></option>
-                            <% }); %>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="itemPhoto">Photo:</label>
-                        <input type="file" id="itemPhoto" name="photo">
-                    </div>
-                    <button type="submit">Add Item</button>
-                </form>
-            </div>
+        <div class="category-list">
+            <% categories.forEach(category => { %>
+                <a href="/categories/<%= category.id %>" class="category-card">
+                    <% if (category.photo_url) { %>
+                        <img src="<%= category.photo_url %>" alt="<%= category.name %>">
+                    <% } %>
+                    <h3><%= category.name %></h3>
+                </a>
+            <% }); %>
         </div>
     </div>
+    
+        <div class="actions">
+            <a href="/categories/new">Add New Category</a>
+            <a href="/">Back to Home</a>
+        </div>
+    
 </body>
 
 

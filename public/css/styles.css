@@ -201,9 +201,10 @@ p, h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
-.featured-categories .category-card {
+.featured-categories .category-card,
+.categories-main .category-card {
   display: block;
-  position: relative; /* Ensure positioning context for text */
+  position: relative;
   overflow: hidden;
   width: 300px; /* Fixed width for cards */
   height: 200px; /* Fixed height for cards to ensure consistency */
@@ -216,7 +217,8 @@ p, h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-.featured-categories .category-card img {
+.featured-categories .category-card img,
+.categories-main .category-card img {
   position: absolute;
   top: 0;
   left: 0;
@@ -227,14 +229,16 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .featured-categories .category-card h3,
-.featured-categories .category-card p {
+.featured-categories .category-card p,
+.categories-main .category-card h3 {
   position: relative; /* Ensure text is above the image */
   z-index: 2; /* Place text above image */
   color: #fff; /* Default text color */
   padding: 10px;
 }
 
-.featured-categories .category-card:hover {
+.featured-categories .category-card:hover,
+.categories-main .category-card:hover {
   background-color: rgba(0, 123, 255, 0.7); /* Semi-transparent background on hover */
   color: #fff;
 }
@@ -257,12 +261,13 @@ p, h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
-.featured-items .item-card {
+.featured-items .item-card,
+.items-main .item-card {
   display: block;
-  position: relative; /* Ensure positioning context for text */
+  position: relative;
   overflow: hidden;
   width: 300px; /* Fixed width for cards */
-  height: 200px; /* Fixed height for cards to ensure consistency */
+  height: 200px; /* Fixed height for cards */
   text-align: center;
   text-decoration: none; /* Remove underline */
   color: #333; /* Text color */
@@ -272,7 +277,8 @@ p, h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-.featured-items .item-card img {
+.featured-items .item-card img,
+.items-main .item-card img {
   position: absolute;
   top: 0;
   left: 0;
@@ -283,14 +289,81 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .featured-items .item-card h3,
-.featured-items .item-card p {
+.items-main .item-card h3 {
   position: relative; /* Ensure text is above the image */
   z-index: 2; /* Place text above image */
   color: #fff; /* Default text color */
   padding: 10px;
 }
 
-.featured-items .item-card:hover {
+.featured-items .item-card:hover,
+.items-main .item-card:hover {
   background-color: rgba(0, 123, 255, 0.7); /* Semi-transparent background on hover */
   color: #fff;
+}
+
+/* Actions Section Styling */
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.actions a {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.actions a:hover {
+  background-color: #218838;
+}
+
+/* Specific Styling for 'Back to Home' */
+.actions a[href="/"] {
+  background-color: #007bff;
+}
+
+.actions a[href="/"]:hover {
+  background-color: #0056b3;
+}
+
+/* Categories Main Section */
+.categories-main {
+  height: 90vh;
+  text-align: center;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+}
+
+.categories-main .category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Items Main Section */
+.items-main {
+  height: 90vh;
+  text-align: center;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+}
+
+.items-main .items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }

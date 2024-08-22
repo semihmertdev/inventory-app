@@ -8,8 +8,8 @@
 </head>
 <body>
 
-     <!-- Navigation Section -->
-     <div class="navigation">
+    <!-- Navigation Section -->
+    <div class="navigation">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/categories">View All Categories</a></li>
@@ -17,40 +17,26 @@
         </ul>
     </div>
 
+    <div class="items-main">
 
-    <h1>Items</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Photo</th>
-            <th>Actions</th>
-        </tr>
-        <% items.forEach(item => { %>
-            <tr>
-                <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
-                <td><%= item.description %></td>
-                <td><%= item.quantity %></td>
-                <td><%= item.price %></td>
-                <td><%= item.category_name %></td>
-                <td>
+        <div class="items-list">
+            <% items.forEach(item => { %>
+                <a href="/items/<%= item.id %>" class="item-card">
                     <% if (item.photo_url) { %>
-                        <img src="<%= item.photo_url %>" alt="Item Photo" style="max-width: 100px;">
+                        <img src="<%= item.photo_url %>" alt="Item Photo">
                     <% } %>
-                </td>
-                <td>
-                    <form action="/items/<%= item.id %>/delete" method="get" style="display:inline;">
-                        <button type="submit">Delete</button>
-                    </form>
-                    <a href="/items/<%= item.id %>/edit">Edit</a>
-                </td>
-            </tr>
-        <% }); %>
-    </table>
-    <a href="/items/new">Add New Item</a>
-    <a href="/">Back to Home</a>
+                    <h3><%= item.name %></h3> <!-- Added item name -->
+                </a>
+            <% }); %>
+        </div>
+
+    </div>
+
+    
+    <div class="actions">
+        <a href="/items/new">Add New Item</a>
+        <a href="/">Back to Home</a>
+    </div>
 </body>
+
 </html>
