@@ -44,9 +44,10 @@
 
     <div class="actions">
         <a href="/items/new">Add New Item</a>
-        <a href="/categories">Back to Categories</a>
+        <a href="/categories/<%= category.id %>/edit" class="btn btn-edit">Edit Category</a>
         <a href="/categories/<%= category.id %>/delete" class="btn btn-delete">Delete Category</a>
     </div>
+    
 </body>
 </html>
 
