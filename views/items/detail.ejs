@@ -24,9 +24,12 @@
             <p><strong>Quantity:</strong> <%= item.quantity %></p>
             <p><strong>Price:</strong> $<%= item.price %></p>
             <p><strong>Category:</strong> <%= item.category_name %></p>
-            <% if (item.photo_url) { %>
+            <div class="item-info-img">
+                <% if (item.photo_url) { %>
                 <img src="<%= item.photo_url %>" alt="Item Photo" class="item-photo">
             <% } %>
+            </div>
+            
         </div>
         <div class="actions">
             <a href="/items/<%= item.id %>/edit" class="btn btn-edit">Edit Item</a>
