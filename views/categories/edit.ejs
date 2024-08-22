@@ -4,28 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Category</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Edit Category</h1>
-    <form action="/categories/<%= category.id %>" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<%= category.name %>" required>
+    <div class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/items">Items</a></li>
+        </ul>
+    </div>
+
+    <div class="category-main">
+        <div class="edit-category">
+            <form action="/categories/<%= category.id %>" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="<%= category.name %>" required>
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required><%= category.description %></textarea>
+                </div>
+                <div>
+                    <label for="photo">Photo:</label>
+                    <% if (category.photo_url) { %>
+                        <img src="<%= category.photo_url %>" alt="Category Photo" style="max-width: 100px; margin-bottom: 10px;">
+                        <input type="hidden" name="existing_photo" value="<%= category.photo_url %>">
+                    <% } %>
+                    <input type="file" id="photo" name="photo">
+                </div>
+                <button type="submit">Update Category</button>
+            </form>
         </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required><%= category.description %></textarea>
-        </div>
-        <div>
-            <label for="photo">Photo:</label>
-            <% if (category.photo_url) { %>
-                <img src="<%= category.photo_url %>" alt="Category Photo" style="max-width: 100px;">
-                <input type="hidden" name="existing_photo" value="<%= category.photo_url %>">
-            <% } %>
-            <input type="file" id="photo" name="photo">
-        </div>
-        <button type="submit">Update Category</button>
-    </form>
-    <a href="/categories">Back to Categories</a>
+    </div>
+    
+    <div class="actions">
+        <a href="/categories">Back to Categories</a>
+    </div>
 </body>
 </html>

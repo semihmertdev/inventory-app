@@ -516,3 +516,148 @@ p, h1, h2, h3, h4, h5, h6 {
 .new-item button:hover {
   background-color: #0056b3;
 }
+
+/* Edit Category Styles */
+
+.category-main {
+  height: 90vh;
+  text-align: center;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 75px;
+}
+
+.edit-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+  height: 100vh;
+}
+
+.edit-category h1 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.edit-category img{
+  max-width: 250px; /* Set the maximum width */
+  max-height: 150px; /* Set the maximum height */
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  margin: 20px auto;
+}
+
+.edit-category form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-category label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.edit-category input[type="text"],
+.edit-category textarea,
+.edit-category input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-category button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-category button:hover {
+  background-color: #0056b3;
+}
+
+/* Edit Item Styles */
+
+.item-main {
+  height: 90vh;
+  text-align: center;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 75px;
+}
+
+.edit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+  width: 100vh;
+}
+
+.edit-item h1 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.edit-item form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-item label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.edit-item input[type="text"],
+.edit-item textarea,
+.edit-item input[type="number"],
+.edit-item select,
+.edit-item input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-item button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-item button:hover {
+  background-color: #0056b3;
+}
+
+/* Photo Styling */
+.edit-item img {
+  max-width: 250px; /* Set the maximum width */
+  max-height: 150px; /* Set the maximum height */
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  margin: 20px auto;
+}
